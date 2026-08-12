@@ -18,7 +18,7 @@ exports.hub = process.env.testnet ? 'obyte.org/bb-test' : 'obyte.org/bb';
 exports.explorer_base_url = process.env.testnet ? 'https://testnetexplorer.obyte.org/' : 'https://explorer.obyte.org/';
 
 // The COOP main AA. The governance AA is discovered from its `constants` state var.
-exports.coop_aa = process.env.coop_aa || (process.env.testnet ? 'SUOLWPFSOJ3VRM3GDYNEOJLFKAELGBR7' : '');
+exports.coop_aa = process.env.coop_aa || (process.env.testnet ? 'SUOLWPFSOJ3VRM3GDYNEOJLFKAELGBR7' : 'COOPT6NEILHN4ZGPKXGNLCKMSD5LIKIU');
 
 // Web app the notifications link back to.
 exports.coop_url = process.env.coop_url || 'https://coop.obyte.org';
