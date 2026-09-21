@@ -54,7 +54,7 @@ eventBus.on('aa_response', async function (objResponse) {
 		if (!event.type)
 			return console.log('ignored response with no type: ', event);
 
-		governanceDiscord.announceEvent(conf.coop_name, conf.coop_url + '/governance', event, { decimals, symbol });
+		await governanceDiscord.announceEvent(conf.coop_name, conf.coop_url + '/governance', event, { decimals, symbol });
 	} catch (e) {
 		console.error('failed to handle aa_response from trigger ' + objResponse.trigger_unit + ':', e);
 	}
