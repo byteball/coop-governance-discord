@@ -15,7 +15,7 @@ const governanceEvents = require('./lib/governance_events.js');
 const getSymbolByAsset = require('./utils/getSymbolByAsset');
 const getDecimalsByAsset = require('./utils/getDecimalsByAsset');
 
-const ignoreOldResponses = true; // if true, responses older than 24h are ignored
+const ignoreOldResponses = true; // if true, responses older than 3 days are ignored
 
 var assocGovernanceAAs = {}; // governance_aa -> { main_aa }
 var assocCoopAAs = {};       // main_aa -> { aa_address, governance_aa, asset, decimals, symbol }
@@ -54,7 +54,7 @@ eventBus.on('aa_response', async function (objResponse) {
 		if (!event.type)
 			return console.log('ignored response with no type: ', event);
 
-		governanceDiscord.announceEvent(conf.coop_name, conf.coop_url + '/governance', event, { decimals, symbol });
+		await governanceDiscord.announceEvent(conf.coop_name, conf.coop_url + '/governance', event, { decimals, symbol });
 	} catch (e) {
 		console.error('failed to handle aa_response from trigger ' + objResponse.trigger_unit + ':', e);
 	}

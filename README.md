@@ -72,8 +72,12 @@ Set `mute=1` in the environment to log messages instead of posting them
 Every announced event is appended to `events.log` in the app data directory
 (`~/Library/Application Support/coop-governance-discord/` on macOS,
 `~/.config/coop-governance-discord/` on Linux) as a tab-separated line:
-timestamp, delivery status (`sent` / `muted` / `failed: ...`), channel id,
-event type, parameter, value, trigger unit.
+timestamp, delivery status (`sent` / `sent on retry` / `muted` / `failed: ...`),
+channel id, event type, parameter, value, trigger unit.
+
+A failed delivery is retried once after 5 seconds. If the retry fails too, the
+bot exits with code 1 so the supervisor restarts it and the failure is not
+silently swallowed.
 
 ## Tests
 
